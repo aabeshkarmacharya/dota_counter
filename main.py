@@ -7,6 +7,7 @@ from discord.ext import commands
 from dotenv import load_dotenv
 
 from heroes import get_bad_against
+from insults import InsultGenerator
 
 load_dotenv()
 help_command = commands.DefaultHelpCommand()
@@ -35,7 +36,8 @@ async def on_ready():
 @bot.command()
 async def whois(ctx, *, keyphrase: str = None):
     if keyphrase.lower() == "hari":
-        response = "Hari is an ape covered in human flesh"
+        ig = InsultGenerator("Hari")
+        response = ig.get_insult()
         args = {"tts": True}
         await ctx.channel.send(response, **args)
 
