@@ -11,11 +11,17 @@ from heroes import get_bad_against
 load_dotenv()
 help_command = commands.DefaultHelpCommand()
 
-bot = commands.Bot("dc/", None, description="Some basic Dota 2 utilities", case_insensitive=True)
+bot = commands.Bot(
+    command_prefix="dc/",
+    help_command=help_command,
+    description="Some basic Dota 2 utilities",
+    case_insensitive=True
+)
 game = discord.Activity(
     name="DOTA 2",
     type=discord.ActivityType.playing,
-    start=datetime.datetime.utcnow())
+    start=datetime.datetime.utcnow()
+)
 
 requests_cache.install_cache('cache')
 
@@ -40,7 +46,7 @@ async def list(ctx, what: str = None):
 
 
 @bot.command(aliases=("c",))
-async def counter(ctx, hero_name: str = None):
+async def counter(ctx, *, hero_name: str = None):
     print(hero_name)
     if hero_name:
         counters, matched_hero = get_bad_against(hero_name)
