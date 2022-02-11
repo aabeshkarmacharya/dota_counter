@@ -34,7 +34,7 @@ requests-cache==0.5.2
 Scrapy==2.1.0
 service-identity==18.1.0
 six==1.14.0
-Twisted==20.3.0
+Twisted==22.1.0
 urllib3==1.25.9
 w3lib==1.21.0
 websockets==8.1
